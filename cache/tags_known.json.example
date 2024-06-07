@@ -1,0 +1,16 @@
+{
+    "tag_list": [
+        {
+            "mac":"00:1A:2B:11:22:33",
+            "last_seen":"<current_date>"
+        },
+        {
+            "mac":"D5:17:35:11:22:33",
+            "last_seen":"<current_date>"
+        },
+        {
+            "mac":"CB:D0:F6:11:22:33",
+            "last_seen":"<current_date>"
+        }
+    ]
+}

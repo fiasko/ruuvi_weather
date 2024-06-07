@@ -1,0 +1,13 @@
+{
+    "system_guid": "",
+    "system_name": "My weather station",
+    "master_server_address": "192.168.0.1",
+    "master_server_port": 9876,
+    "master_server_username": "user",
+    "master_server_password": "plain_text",
+    "influx_db_address": "192.168.0.1",
+    "influx_db_port": 8086,
+    "influx_db_username": "user",
+    "influx_db_password": "plain_text",
+    "influx_db_database": "ruuvi_database"
+}

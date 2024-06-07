@@ -1,0 +1,19 @@
+{
+    "tag_info": [
+        {
+            "name":"Tag 1",
+            "mac":"CC:20:DE:11:22:33",
+            "ingore":false
+        },
+        {
+            "name":"Tag 2",
+            "mac":"C8:3C:63:11:22:33",
+            "ingore":false
+        },
+        {
+            "name":"Tag 3",
+            "mac":"D5:17:35:11:22:33",
+            "ingore":true
+        }
+    ]
+}
