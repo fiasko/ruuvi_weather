@@ -49,18 +49,18 @@ def handle_data(found_data):
     known_tags_database.update_tag_info(found_data[0], tag_key='mac', update_date=True)
 
     if foreign_tags_database.is_tag_in_database(found_data[0]):
-        print('foreign tag detected: ' + found_data[0])
+        print(f'Foreign tag detected: {found_data[0]}')
         return
     else:
         tag_info = next((tag for tag in tag_info_database if tag["mac"] == found_data[0]), None)
         if tag_info:
             if tag_info['ingore']:
-                print ('tag name: ' + tag_info['name'] + "(ignored)")
+                print (f'Tag name: {tag_info['name']} (ignored)')
                 return
             else:
                 tag_accountant.update(tag_info['name'])
         else:
-            print('tag info not found! ignoring results: ' + found_data[0])
+            print(f'Unkown tag found! ignoring results: {found_data[0]}')
             return
 
     # Data for Influxdb module

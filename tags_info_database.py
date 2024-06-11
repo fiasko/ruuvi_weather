@@ -14,7 +14,7 @@ if __name__ == '__main__':
     tag_info_database_file = 'cache/tags_info.json'
     tag_database = read_tag_info_database(tag_info_database_file)
     if tag_database is None:
-        print('Database "' + tag_info_database_file + '" read failed!')
+        print(f'Database "{tag_info_database_file}" read failed!')
     else:
         print('Database content')
         print(tag_database)
