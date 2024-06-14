@@ -1,4 +1,7 @@
 import os
+# set environment variable for Ruuvitag sensor
+os.environ["RUUVI_BLE_ADAPTER"] = "bleak"
+
 import asyncio
 from datetime import datetime, timedelta
 from ruuvitag_sensor.ruuvi import RuuviTagSensor
@@ -9,9 +12,6 @@ from settings_database import initialize_settings
 from tag_accountant import TagAccountant
 
 # Global settings
-# set environment variable for Ruuvitag sensor
-os.environ["RUUVI_BLE_ADAPTER"] = "bleak"
-
 # Information from known tags
 weather_station_settings_database_path= 'cache/settings.json'
 tags_info_database_path= 'cache/tags_info.json'
