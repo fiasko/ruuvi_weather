@@ -38,11 +38,14 @@ class TagDatabase:
         else:
             return tag_id in self._data.get(self._list_name, [])
 
-    def update_tag_info(self, tag_id, tag_key, update_date=False):
+    def update_tag_info(self, tag_id, tag_key, update_date=False, tag_rssi=None):
         global tag_date_format
         current_date = datetime.now().strftime(tag_date_format)
         if not self.is_tag_in_database(tag_id, tag_key):
-            self._data[self._list_name].append({tag_key:tag_id, "last_seen":current_date})
+            tag_data = {tag_key:tag_id, "last_seen":current_date}
+            if tag_rssi:
+                tag_data['rssi'] = int(tag_rssi)
+            self._data[self._list_name].append(tag_data)
             self._save_database()
             print(f"Tag '{tag_id}' added to the database.")
         elif update_date:
@@ -50,6 +53,8 @@ class TagDatabase:
                 if tag[tag_key] == tag_id:
                     if tag["last_seen"] != current_date:
                         tag["last_seen"] = current_date
+                        if tag_rssi:
+                             tag['rssi'] = int(tag_rssi)
                         self._save_database()
                         print(f"Tag '{tag_id}' 'last_seen' info updated in the database")
         else:
@@ -81,15 +86,15 @@ class TagDatabase:
 # Example usage
 if __name__ == '__main__':
     test_tag_list = [
-        'CC:20:DE:0E:CC:09',
-        'C8:3C:63:34:07:82',
-        'D5:17:35:B3:E4:96',
-        # 'FC:34:B1:03:04:8B',
-        # 'CD:07:4E:FC:46:51',
-        # 'DC:89:51:B6:70:41',
-        # 'F7:9C:73:7C:32:BA',
-        'CB:D0:F6:BE:05:7E',
-        'E1:A0:2D:3E:10:4F',
+        'CC:20:DE:12:34:56',
+        'C8:3C:63:12:34:56',
+        'D5:17:35:12:34:56',
+        # 'FC:34:B1:12:34:56',
+        # 'CD:07:4E:12:34:56',
+        # 'DC:89:51:12:34:56',
+        # 'F7:9C:73:12:34:56',
+        'CB:D0:F6:12:34:56',
+        'E1:A0:2D:12:34:56',
     ]
 
     db = TagDatabase('cache/tags_known.json', 'tag_list')

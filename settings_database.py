@@ -9,8 +9,6 @@ default_settings_template = {
 
         'master_server_address': '',
         'master_server_port': 0,
-        'master_server_username': '',
-        'master_server_password': '',
 
         'influx_db_address': '',
         'influx_db_port': 8086,
