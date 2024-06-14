@@ -38,11 +38,14 @@ class TagDatabase:
         else:
             return tag_id in self._data.get(self._list_name, [])
 
-    def update_tag_info(self, tag_id, tag_key, update_date=False):
+    def update_tag_info(self, tag_id, tag_key, update_date=False, tag_rssi=None):
         global tag_date_format
         current_date = datetime.now().strftime(tag_date_format)
         if not self.is_tag_in_database(tag_id, tag_key):
-            self._data[self._list_name].append({tag_key:tag_id, "last_seen":current_date})
+            tag_data = {tag_key:tag_id, "last_seen":current_date}
+            if tag_rssi:
+                tag_data['rssi'] = int(tag_rssi)
+            self._data[self._list_name].append(tag_data)
             self._save_database()
             print(f"Tag '{tag_id}' added to the database.")
         elif update_date:
@@ -50,6 +53,8 @@ class TagDatabase:
                 if tag[tag_key] == tag_id:
                     if tag["last_seen"] != current_date:
                         tag["last_seen"] = current_date
+                        if tag_rssi:
+                             tag['rssi'] = int(tag_rssi)
                         self._save_database()
                         print(f"Tag '{tag_id}' 'last_seen' info updated in the database")
         else:

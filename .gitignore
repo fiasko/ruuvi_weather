@@ -3,6 +3,6 @@
 /env
 /__pycache__
 /cache/settings.json
-/cache/tags_known.json
 /cache/tags_foreign.json
 /cache/tags_info.json
+/cache/tags_detected.json
