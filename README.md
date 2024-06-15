@@ -4,8 +4,8 @@ Ruuvi tag weather data receiver. Receives the data transmitted by Ruuvi tags and
 # Dependencies
 - Python 3
 - bluez-hcidump (ruuvitag-sensor dependency)
-- ruuvitag-sensor python module
-- influxdb python module
-- bleak python module
+- [RuuviTag Sensor](https://github.com/ttu/ruuvitag-sensor) python package
+- [InfluxDB-Python](https://github.com/influxdata/influxdb-python) python package
+- [bleak](https://github.com/hbldh/bleak) python package
 
   
