@@ -53,7 +53,7 @@ async def main():
         detected_tags_database.update_tag_info(found_data[0], tag_key='mac', update_date=True, tag_rssi=found_data[1]['rssi'])
 
         if foreign_tags_database.is_tag_in_database(found_data[0]):
-            print(f'Foreign tag detected: {found_data[0]}')
+            #print(f'Foreign tag detected: {found_data[0]}')
             continue
         else:
             tag_info = next((tag for tag in tag_info_database if tag["mac"] == found_data[0]), None)
