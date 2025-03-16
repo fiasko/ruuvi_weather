@@ -54,18 +54,18 @@ async def main():
 
         if foreign_tags_database.is_tag_in_database(found_data[0]):
             print(f'Foreign tag detected: {found_data[0]}')
-            return
+            continue
         else:
             tag_info = next((tag for tag in tag_info_database if tag["mac"] == found_data[0]), None)
             if tag_info:
                 if tag_info['ingore']:
                     print (f'Tag name: { tag_info["name"] } (ignored)')
-                    return
+                    continue
                 else:
                     tag_accountant.update(tag_info['name'])
             else:
                 print(f'Unkown tag found! ignoring results: {found_data[0]}')
-                return
+                continue
 
         # Data for Influxdb module
         if influxdb:
