@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-class TagAccountant:
+class TagPresenceTracker:
     def __init__(self, tag_detection_timeout = timedelta(seconds=60)):
         self._tag_detection_timeout = tag_detection_timeout
         self._new_tag_list = dict()
@@ -24,4 +24,3 @@ class TagAccountant:
         
         for tag in removable_tags:
             del self._new_tag_list[tag]
-            

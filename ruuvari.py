@@ -9,7 +9,7 @@ from my_influx_db import InfluxDatabase
 from tags_info_database import read_tag_info_database
 from tag_database import TagDatabase
 from settings_database import initialize_settings
-from tag_accountant import TagAccountant
+from tag_presence_tracker import TagPresenceTracker
 
 # Global settings
 # Information from known tags
@@ -33,8 +33,8 @@ else:
 
 print(f"Starting weather station: {app_settings['system_name']}")
 
-# Runtime list detected tags
-tag_accountant = TagAccountant(tag_detection_timeout=timedelta(seconds=60))
+# List of tags detected during runtime
+tag_presence_tracker = TagPresenceTracker(tag_detection_timeout=timedelta(seconds=120))
 current_date_prev = ""
 
 async def main():
@@ -62,7 +62,7 @@ async def main():
                     print (f'Tag name: { tag_info["name"] } (ignored)')
                     continue
                 else:
-                    tag_accountant.update(tag_info['name'])
+                    tag_presence_tracker.update(tag_info['name'])
             else:
                 print(f'Unkown tag found! ignoring results: {found_data[0]}')
                 continue
